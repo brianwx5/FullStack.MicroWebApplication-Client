@@ -40,7 +40,7 @@ export class TagsComponent implements OnInit {
       this.filteredPost = this.tagService.findFilteredPostsByTag(this.filteredTagList);
     } else if (this.filteredTagList.indexOf(tagName) !== -1 && this.filteredTagList.length === 1) {
       this.filteredTagList = [];
-      this.filteredPost = this.nothingToggled()
+      this.filteredPost = this.nothingToggled();
     } else {
       this.filteredTagList.splice(this.filteredTagList.indexOf(tagName), 1);
       this.filteredPost = [];
