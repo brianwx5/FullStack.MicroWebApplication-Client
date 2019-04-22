@@ -1,16 +1,17 @@
-<div class="jumbotron" style="margin: 2% 5% 0% 5%; ">
-  <h1 style="font-size: 7vmin; margin-top: -5vmin">{{post.postTitle}}</h1><br/>
-  <div class="btn-group btn-group-toggle" data-toggle="buttons" *ngFor="let tag of tags">
-    <label class="btn btn-primary">
-      <input type="checkbox" checked=""> #{{tag}}
-    </label>
+<div class="backgroundImage"
+  [ngStyle]="{ 'background-image': 'url(' + imageUrl + ')'}" >
+  <div class="jumbotron" style="margin: 2% 5% 0% 5%;">
+    <h1 style="font-size: 7vmin; margin-top: -5vmin">{{post.postTitle}}</h1><br/>
+    <div class="btn-group btn-group-toggle" data-toggle="buttons" *ngFor="let tag of tags">
+      <button class="btn btn-outline-primary" [routerLink]="['/tag/', tag.id]">#{{tag.tagName}}</button>
+    </div>
+    <div [routerLink]="['/users/posts/', post.creator.id]">By: {{post.creator.name}}</div>
+    <div>Posted Date: {{post.createdDate}}</div>
+    <h3>{{post.postSummary}}</h3>
+    <img [src]=imageUrl alt="PlaceHolder" class="rounded-circle" height="80">
+    <div>{{post.postContent}}</div>
   </div>
-  <div>By: {{post.creator.name}}</div>
-  <div>Posted Date: {{post.createdDate}}</div>
-  <h3>{{post.postSummary}}</h3><br/>
-  <hr class="my-4">
-  <div>{{post.postContent}}</div>
-</div>
-<div style="margin: 0 10% 5% 10%">
-  <app-comment-form></app-comment-form>
+  <div style="margin: 1% 5% 0 5%;">
+    <app-comment-form></app-comment-form>
+  </div>
 </div>

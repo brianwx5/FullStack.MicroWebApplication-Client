@@ -1,9 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {Comments} from '../../models/Comments';
-import { CommentsPostService} from '../../services/comments-post.service';
-import {Post} from '../../models/Post';
-import {Tags} from '../../models/Tag';
-import {TagService} from '../../services/tag.service';
 import {ActivatedRoute} from '@angular/router';
 import {BlogApiService} from '../../services/blog.api.service';
 
@@ -17,6 +13,7 @@ export class CommentFormComponent implements OnInit {
   public showing = false;
   public comments = [];
   model = new Comments(null, '', new Date(), null, {id: null, name: localStorage.getItem('username')});
+  creator = localStorage.getItem('username');
   constructor(private postId: ActivatedRoute, private blogApiService: BlogApiService) { }
 
   ngOnInit() {
